@@ -8,3 +8,15 @@ To measure time/RSS, use `/usr/bin/time -v`. For more detailed memory tracking, 
 
 [1]: https://github.com/milianw/shell-helpers/blob/master/track_memory.sh
 [2]: https://github.com/milianw/shell-helpers/blob/master/show_memory.sh
+
+## no mmap
+
+![no mmap](no_mmap.png)
+
+Heap equals RSS equals Dirty, all at 4GB after initial buffer allocation.
+
+## mmap
+
+![no mmap](mmap.png)
+
+RSS goes up to 4GB at the end, but only ~1GB is dirty at most, the rest apparently gets discarded early by the kernel. A bit faster too!
